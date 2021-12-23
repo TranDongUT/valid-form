@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Valid Form</title>
+</head>
+<body>
+    <div id="root">
+        <form action="#" id="form">
+            <h1 class="form__title">Register</h1>
+            <div class="form__body username">
+                <input id="username" type="text" placeholder="Username">
+                <span></span>
+                <p class="message"></p>
+            </div>
+            <div class="form__body email">
+                <input id="email" type="email" placeholder="Email">
+                <span></span>
+                <p class="message"></p>
+            </div>
+            <div class="form__body password">
+                <input id="password" type="password" placeholder="Password">
+                <span></span>
+                <p class="message"></p>
+            </div>
+            <div class="form__body confrim">
+                <input id="confirm-password" type="password" placeholder="Confirm password">
+                <span></span>
+                <p class="message"></p>
+            </div>
+            <button class="form__btn">Login</button>
+            <p>Not a member? <a class="signup-link" href="#">SignUp</a></p>
+        </form>
+    </div>
+</body>
+<script src="./app.js"></script>
+</html>
