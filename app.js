@@ -84,11 +84,17 @@ submitForm.addEventListener('submit',(e)=>{
     e.preventDefault();
     if(check(inputForm)){
         alert('Thành Công')
-        //resetForm();
+        resetForm();
     }
 })
 
 function resetForm(){
+
+    username.value = '' ;
+    email.value = '' ;
+    password.value = '' ;
+    confirmPass.value = '' ;
+
     const form = $$('.form__body');
     form.forEach(e => {
         e.classList.remove('success');
