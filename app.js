@@ -57,7 +57,8 @@ function showSuccess(e, message = 'Thành công'){
     successMsg.innerText = message;
 }
 
-submitForm.addEventListener('submit',()=>{
+submitForm.addEventListener('submit',(e)=>{
+    e.preventDefault();
     if(checkEmpty(inputForm)){
         if(checkPasswordLength(password)){
              if(checkConfirm()){
