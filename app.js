@@ -84,7 +84,7 @@ submitForm.addEventListener('submit',(e)=>{
     e.preventDefault();
     if(check(inputForm)){
         alert('Thành Công')
-        //resetForm();
+        resetForm();
     }
 })
 
