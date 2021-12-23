@@ -71,8 +71,8 @@
     position: absolute;
     display: block;
     width: 0%;
-    border-top: 3px solid var(--success-color);
-    bottom: -1px;
+    border-top: 4px solid var(--success-color);
+    bottom: -1.5px;
     transition: 0.4s;
 }
 

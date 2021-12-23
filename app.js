@@ -8,18 +8,33 @@ const password = $('#password');
 const confirmPass = $('#confirm-password');
 const inputForm = $$('input');
 
-function checkEmpty(inputForm){
+function check(inputForm){
     var flag = true;
     inputForm.forEach(e => {
         e.value = e.value.trim();
-        if(e.value == ''){
+        if(e.value != ''){
+            showSuccess(e);
+            if(e.id == 'email'){
+                if(!validateEmail(e.value)){
+                    showError(e,`${e.placeholder} Không hợp lệ`)
+                    return flag = false;
+                }
+            }
+            if(e.id == 'password' || e.id == 'confirm-password'){
+                checkPasswordLength(e);
+                if(checkPasswordLength(e)){
+                    if(!checkConfirm()){
+                        return flag = false;
+                    }
+                }
+            }
+        }
+        else{
             showError(e, `${e.placeholder} Không được để trống`);
             return flag = false;
         }
-        else{
-            showSuccess(e);
-        }
-    });
+    });    
+    
     return flag;
 }
 
@@ -41,6 +56,14 @@ function checkConfirm(){
     return true;
 }
 
+const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+
 function showError(e, message){
     const formBody = e.closest('.form__body');
     const errorMsg = formBody.querySelector('.message');
@@ -59,18 +82,9 @@ function showSuccess(e, message = 'Thành công'){
 
 submitForm.addEventListener('submit',(e)=>{
     e.preventDefault();
-    if(checkEmpty(inputForm)){
-        if(checkPasswordLength(password)){
-             if(checkConfirm()){
-                alert('Thành Công')
-                username.value = '';
-                email.value = '';
-                password.value = '';
-                confirmPass.value = '';
-                inputForm .value = '';
-                resetForm();
-             }
-        }
+    if(check(inputForm)){
+        alert('Thành Công')
+        //resetForm();
     }
 })
 
